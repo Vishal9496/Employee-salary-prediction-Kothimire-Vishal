@@ -25,7 +25,7 @@ occupation = st.sidebar.selectbox("Job Role", [
     "Protective-serv", "Armed-Forces"
 ])
 hours_per_week = st.sidebar.slider("Hours per week", 1, 80, 40)
-experience = st.sidebar.slider("Years of Experience", 0, 40, 5)
+
 
 # Build input DataFrame (must match preprocessing of your training data)
 input_df = pd.DataFrame({
@@ -33,7 +33,6 @@ input_df = pd.DataFrame({
     'education': [education],
     'occupation': [occupation],
     'hours-per-week': [hours_per_week],
-    'experience': [experience]
 })
 
 st.write("### Input Data")
@@ -56,7 +55,9 @@ if st.button("Predict Salary Class"):
 # Batch prediction
 st.markdown("---")
 st.markdown("#### 📊 Batch Prediction")
-uploaded_file = st.file_uploader("Upload a CSV file for batch prediction", type="csv")
+uploaded_file = st.file_uploader(
+    "Upload a CSV file for batch prediction", type="csv"
+)
 
 if uploaded_file is not None:
     try:
